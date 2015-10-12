@@ -19,3 +19,34 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Issue::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->randomDigitNotNull.' '.$faker->year(),
+        'due' => $faker->dateTimeThisYear(),
+    ];
+});
+
+$factory->define(App\Customer::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->company,
+        'address' => $faker->address,
+        'telephone' => $faker->phoneNumber,
+        'email' => $faker->email,
+        'comments' => $faker->text,
+    ];
+});
+
+$factory->define(App\Adformat::class, function (Faker\Generator $faker) {
+    return [
+        'name' => '1/'.$faker->numberBetween(1, 3).' page',
+        'price' => $faker->numberBetween(1000, 5000),
+    ];
+});
+
+$factory->define(App\Advertisement::class, function (Faker\Generator $faker) {
+    return [
+        'comments' => $faker->text,
+        'paid' => $faker->boolean(50),
+    ];
+});

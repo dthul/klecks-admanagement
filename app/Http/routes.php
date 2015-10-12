@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/invoices', function () {
+    return 'Invoices';
+});
+
+Route::get('/issues', function () {
+    return 'Issues';
+});
+
+Route::get('/issues/{id}', function ($id) {
+    return 'Issue '.$id;
+});
+
+Route::get('/customers', function () {
+    return 'Customers';
+});
