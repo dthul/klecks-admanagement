@@ -19,9 +19,7 @@ Route::get('/invoices', function () {
     return 'Invoices';
 });
 
-Route::get('/issues', function () {
-    return 'Issues';
-});
+Route::get('/issues', 'IssueController@showIssues');
 
 Route::get('/issues/{id}', function ($id) {
     return 'Issue '.$id;
