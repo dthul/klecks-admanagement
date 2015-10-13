@@ -18,30 +18,35 @@ elixir(function(mix) {
             ],
             'public/css',
             {
-                includePaths: [
+                includePaths:
+                [
                     'bower_components/foundation/scss'
                 ]
             }
         )
         .styles(
             [
-                '../../bower_components/foundation/css/normalize.min.css',
-                'app.css'
+                'bower_components/foundation/css/normalize.min.css',
+                'public/css/app.css'
             ],
             'public/css/all.css',
-            'public/css'
+            '.'
         )
-        .scripts([
-            'bower_components/foundation/js/vendor/jquery.js',
-            'bower_components/foundation/js/vendor/fastclick.js',
-            'bower_components/foundation/js/foundation.min.js'
-        ],
-        'public/js/vendor/foundation.js',
-        '.'
+        .scripts(
+            [
+                'bower_components/foundation/js/vendor/jquery.js',
+                'bower_components/foundation/js/vendor/fastclick.js',
+                'bower_components/foundation/js/foundation.min.js'
+            ],
+            'public/js/vendor/foundation.js',
+            '.'
         )
-        .scripts([
-            'bower_components/foundation/js/vendor/modernizr.js'
-        ],
-        'public/js/vendor/modernizr.js',
-        '.');
+        .scripts(
+            [
+                'bower_components/foundation/js/vendor/modernizr.js'
+            ],
+            'public/js/vendor/modernizr.js',
+            '.'
+        )
+    ;
 });

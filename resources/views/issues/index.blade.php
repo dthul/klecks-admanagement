@@ -3,5 +3,10 @@
 @section('title', 'Ausgaben')
 
 @section('content')
-    <p>Ausgaben</p>
+    <h1>Ausgaben</h1>
+    <ul>
+    @foreach($issues as $issue)
+        <li>{{ $issue->name }}</li>
+    @endforeach
+    </ul>
 @stop
