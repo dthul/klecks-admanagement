@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Advertisement extends Model
@@ -19,7 +20,7 @@ class Advertisement extends Model
      *
      * @var array
      */
-    protected $fillable = ['comments', 'paid'];
+    protected $fillable = ['comments', 'paid', 'adformat_id'];
 
     /**
      * Get the customer that owns the advertisement.
@@ -35,5 +36,15 @@ class Advertisement extends Model
     public function adformat()
     {
         return $this->belongsTo('App\Adformat');
+    }
+
+    public function getIssue()
+    {
+        return DB::table('advertisements')
+            ->where('advertisements.id', '=', $this->id)
+            ->join('adformats', 'advertisements.adformat_id', '=', 'adformats.id')
+            ->join('issues', 'adformats.issue_id', '=', 'issues.id')
+            ->select('issues.*')
+            ->first();
     }
 }

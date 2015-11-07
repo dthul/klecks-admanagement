@@ -19,7 +19,7 @@ class CreateAdformatsTable extends Migration
             $table->integer('price');
             $table->integer('issue_id')->unsigned()->index();
             $table->foreign('issue_id')->references('id')->on('issues');
-            // $table->unique(['issue_id', 'name']);
+            $table->unique(['issue_id', 'name']);
         });
     }
 

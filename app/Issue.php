@@ -36,4 +36,9 @@ class Issue extends Model
     {
         return $this->hasManyThrough('App\Advertisement', 'App\Adformat');
     }
+
+    public function getDates()
+    {
+        return ['created_at', 'updated_at', 'due'];
+    }
 }
