@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // TODO: does this beong here?
+        // TODO: does this belong here?
         setlocale(LC_TIME, 'de_DE.utf8');
     }
 

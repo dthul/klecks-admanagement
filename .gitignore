@@ -1,7 +1,9 @@
-/vendor
-/node_modules
 /bower_components
+/node_modules
+/public/storage
+/storage/*.key
+/vendor
 /.idea
-Homestead.yaml
 Homestead.json
+Homestead.yaml
 .env
