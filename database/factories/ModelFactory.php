@@ -42,7 +42,7 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Adformat::class, function (Faker\Generator $faker) {
     return [
-        'name' => '1/'.$faker->numberBetween(1, 3).' page',
+        'name' => '1/'.$faker->numberBetween(1, 3).' page ('.str_random(12).')',
         'price' => $faker->numberBetween(1000, 5000),
     ];
 });
