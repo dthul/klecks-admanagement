@@ -14,9 +14,10 @@ const elixir = require('laravel-elixir');
 elixir((mix) => {
     mix.sass(
             [
-                'app.scss'
+                'resources/assets/sass/app.scss'
             ],
             'public/css/app.css',
+            '.',
             {
                 includePaths:
                 [
