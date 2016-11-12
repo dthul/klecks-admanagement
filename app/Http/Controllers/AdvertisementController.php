@@ -30,7 +30,7 @@ class AdvertisementController extends Controller
         $this->validate($request, [
             'adformat_id' => [
                 'required',
-                Rule::exists('adformats')->where(function ($query) { $query->where('issue_id', $current_adformat->issue_id); },
+                Rule::exists('adformats')->where(function ($query) { $query->where('issue_id', $current_adformat->issue_id); }),
             ],
         ]);
         $advertisement->update($request->only('adformat_id'));

@@ -46,7 +46,7 @@ class IssueController extends Controller
         $this->validate($request, [
             'name' => [
                 'string', 'required', 'max:256',
-                Rule::unique('issues')->ignore($id)
+                Rule::unique('issues')->ignore($id),
             ],
             'due' => 'date|required',
         ]);

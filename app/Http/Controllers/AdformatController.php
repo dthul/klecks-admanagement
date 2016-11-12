@@ -15,7 +15,7 @@ class AdformatController extends Controller
         $this->validate($request, [
             'name' => [
                 'string', 'required', 'max:255',
-                Rule::unique('adformats')->where(function ($query) { $query->where('issue_id', $issue_id); },
+                Rule::unique('adformats')->where(function ($query) { $query->where('issue_id', $issue_id); }),
             ],
             'price' => 'integer|required|min:0|max:1000000',
         ]);
@@ -30,7 +30,7 @@ class AdformatController extends Controller
         $this->validate($request, [
             'name' => [
                 'string', 'required', 'max:255',
-                Rule::unique('adformats')->ignore($id)->where(function ($query) { $query->where('issue_id', $adformat->issue_id); },
+                Rule::unique('adformats')->ignore($id)->where(function ($query) { $query->where('issue_id', $adformat->issue_id); }),
             ],
             'price' => 'integer|required|min:0|max:1000000',
         ]);
