@@ -15,7 +15,9 @@
      role="dialog">
     <form method="POST" action="{{ !$create ? route('advertisements.update', $advertisement->id) : route('advertisements.create') }}" autocomplete="off">
         {!! csrf_field() !!}
-        {{ $issue->name }}
+        <label>Ausgabe
+            <input type="text" value="{{ $issue->name }}" readonly>
+        </label>
         <label>Kunde
             @if ($create)
                 <select name="customer_id">
