@@ -12,46 +12,44 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('issues.latest');
 });
 
 // Issue
-Route::get('/issues', ['as' => 'issues.index', 'uses' => 'IssueController@showAll']);
+Route::get('/issues', 'IssueController@showAll')->name('issues.index');
 
-Route::get('/issues/latest', ['as' => 'issues.latest', 'uses' => 'IssueController@showLatest']);
+Route::get('/issues/latest', 'IssueController@showLatest')->name('issues.latest');
 
-Route::get('/issues/{id}', ['as' => 'issues.issue', 'uses' => 'IssueController@show']);
+Route::get('/issues/{id}', 'IssueController@show')->name('issues.issue');
 
-Route::post('/issues', ['as' => 'issues.create', 'uses' => 'IssueController@create']);
+Route::post('/issues', 'IssueController@create')->name('issues.create');
 
-Route::post('/issues/{id}', ['as' => 'issues.update', 'uses' => 'IssueController@update']);
+Route::post('/issues/{id}', 'IssueController@update')->name('issues.update');
 
-Route::post('/issues/{id}/delete', ['as' => 'issues.delete', 'uses' => 'IssueController@delete']);
+Route::post('/issues/{id}/delete', 'IssueController@delete')->name('issues.delete');
 
 // Customer
-Route::get('/customers', ['as' => 'customers.index', 'uses' => 'CustomerController@showAll']);
+Route::get('/customers', 'CustomerController@showAll')->name('customers.index');
 
-Route::post('/customers', ['as' => 'customers.create', 'uses' => 'CustomerController@create']);
+Route::post('/customers', 'CustomerController@create')->name('customers.create');
 
-Route::post('/customers/{id}', ['as' => 'customers.update', 'uses' => 'CustomerController@update']);
+Route::post('/customers/{id}', 'CustomerController@update')->name('customers.update');
 
-Route::post('/customers/{id}/delete', ['as' => 'customers.delete', 'uses' => 'CustomerController@delete']);
+Route::post('/customers/{id}/delete', 'CustomerController@delete')->name('customers.delete');
 
 // Adformat
-Route::post('/issues/{issue_id}/adformats', ['as' => 'adformats.create', 'uses' => 'AdformatController@create']);
+Route::post('/issues/{issue_id}/adformats', 'AdformatController@create')->name('adformats.create');
 
-Route::post('/adformats/{id}', ['as' => 'adformats.update', 'uses' => 'AdformatController@update']);
+Route::post('/adformats/{id}', 'AdformatController@update')->name('adformats.update');
 
-Route::post('/adformats/{id}/delete', ['as' => 'adformats.delete', 'uses' => 'AdformatController@delete']);
+Route::post('/adformats/{id}/delete', 'AdformatController@delete')->name('adformats.delete');
 
 // Advertisement
-Route::post('/advertisements/{id}/delete', ['as' => 'advertisements.delete', 'uses' => 'AdvertisementController@delete']);
+Route::post('/advertisements', 'AdvertisementController@create')->name('advertisements.create');
 
-Route::post('/advertisements', ['as' => 'advertisements.create', 'uses' => 'AdvertisementController@create']);
+Route::post('/advertisements/{id}', 'AdvertisementController@update')->name('advertisements.update');
 
-Route::post('/advertisements/{id}', ['as' => 'advertisements.update', 'uses' => 'AdvertisementController@update']);
-
-Route::post('/advertisements/{id}/delete', ['as' => 'advertisements.delete', 'uses' => 'AdvertisementController@delete']);
+Route::post('/advertisements/{id}/delete', 'AdvertisementController@delete')->name('advertisements.delete');
 
 // Invoice
-Route::get('/issues/{issue_id}/customers/{customer_id}/invoice', ['as' => 'invoice', 'uses' => 'InvoiceController@show']);
+Route::get('/issues/{issue_id}/customers/{customer_id}/invoice', 'InvoiceController@show')->name('invoice');
