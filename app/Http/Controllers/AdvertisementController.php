@@ -19,7 +19,7 @@ class AdvertisementController extends Controller
         $adformat = Adformat::findOrFail($request->input('adformat_id'));
         $advertisement = new Advertisement($request->only('customer_id'));
         $adformat->advertisements()->save($advertisement);
-        return redirect()->route('issues.issue', $adformat->issue_id);*/
+        return redirect()->route('issues.issue', $adformat->issue_id);
     }
 
     public function update(Request $request, $id)
@@ -35,7 +35,7 @@ class AdvertisementController extends Controller
         ]);
         $advertisement->update($request->only('adformat_id'));
         $advertisement->save();
-        return redirect()->route('issues.issue', $advertisement->adformat->issue_id);*/
+        return redirect()->route('issues.issue', $advertisement->adformat->issue_id);
     }
 
     public function delete($id)

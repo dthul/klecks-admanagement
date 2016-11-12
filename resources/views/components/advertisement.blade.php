@@ -17,13 +17,13 @@
         {!! csrf_field() !!}
         {{ $issue->name }}
         <label for="{{ $id }}_customer">Kunde</label>
-        @if $create
+        @if ($create)
             <select name="customer_id" id="{{ $id }}_customer">
-                @foreach ($customers as $customer)
+                @forelse ($customers as $customer)
                     <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                 @empty
                     <option value="invalid">- Kein Kunde vorhanden -</option>
-                @endforeach
+                @endforelse
             </select>
         @else
             <input type="text" value="{{ $advertisement->customer->name }}" readonly>
