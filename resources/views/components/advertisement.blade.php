@@ -32,7 +32,7 @@
         <label>Werbeformat
             <select name="adformat_id">
                 @foreach ($issue->adformats as $adformat)
-                    <option value="{{ $adformat->id }}">{{ $adformat->name }}</option>
+                    <option value="{{ $adformat->id }}" @if (!$create && $advertisement->adformat_id === $adformat->id) selected @endif>{{ $adformat->name }}</option>
                 @endforeach
             </select>
         </label>
