@@ -10,28 +10,30 @@
 <div id="{{ $id }}"
      class="reveal-modal tiny"
      data-reveal
-     aria-labelledby="{{ !$create ? $advertisement->name : 'Neue Anzeige' }}"
+     aria-labelledby="{{ !$create ? $advertisement->adformat->name : 'Neue Anzeige' }}"
      aria-hidden="true"
      role="dialog">
-    <form method="POST" action="{{ !$create ? route('advertisements.update', $advertisement->id) : route('advertisements.create', $issue->id) }}" autocomplete="off">
+    <form method="POST" action="{{ !$create ? route('advertisements.update', $advertisement->id) : route('advertisements.create') }}" autocomplete="off">
         {!! csrf_field() !!}
-        {{--<label for="{{ $id }}_name">Ausgabe</label>
-        <input type="text" value="{{ !$create ? $advertisement->name : '' }}" placeholder="2015-2" name="name" id="{{ $id }}_name">
-        <label for="{{ $id }}_due">Fällig am</label>
-        <input type="date" value="{{ !$create ? $advertisement->due->format('Y-m-d') : '' }}" name="due" id="{{ $id }}_due">
-        <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>--}}
         {{ $issue->name }}
         <label for="{{ $id }}_customer">Kunde</label>
-        <select name="customer_id" id="{{ $id }}_customer">
-            @foreach ($issue->adformats as $adformat)
-                <option value="{{ $adformat->id }}">{{ $adformat->name }}</option>
-            @endforeach
-        </select>
+        @if $create
+            <select name="customer_id" id="{{ $id }}_customer">
+                @foreach ($customers as $customer)
+                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                @empty
+                    <option value="invalid">- Kein Kunde vorhanden -</option>
+                @endforeach
+            </select>
+        @else
+            <input type="text" value="{{ $advertisement->customer->name }}" readonly>
+        @endif
         <label for="{{ $id }}_adformat">Werbeformat</label>
         <select name="adformat_id" id="{{ $id }}_adformat">
             @foreach ($issue->adformats as $adformat)
                 <option value="{{ $adformat->id }}">{{ $adformat->name }}</option>
             @endforeach
         </select>
+        <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
     </form>
 </div>

@@ -30,7 +30,7 @@
     </tbody>
     </table>
     <h2>Anzeigen <span class="label">{{ $issue->advertisements()->count() }}</h2>
-    <p>@include('components.advertisement', ['advertisement' => null, 'issue' => $issue])</p>
+    <p>@include('components.advertisement', ['advertisement' => null, 'issue' => $issue, 'customers' => $customers])</p>
     <table id="advertisements_table">
     <thead>
         <tr>

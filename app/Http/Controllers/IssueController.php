@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\Issue;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class IssueController extends Controller
     public function show($id)
     {
         $issue = Issue::findOrFail($id);
-        return view('issues.issue', ['issue' => $issue]);
+        $customers = Customer::orderBy('name')->all();
+        return view('issues.issue', ['issue' => $issue, 'customers' => $customers]);
     }
 
     public function showLatest()
