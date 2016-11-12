@@ -18,7 +18,7 @@ class IssueController extends Controller
     public function show($id)
     {
         $issue = Issue::findOrFail($id);
-        $customers = Customer::orderBy('name')->all();
+        $customers = Customer::orderBy('name')->get();
         return view('issues.issue', ['issue' => $issue, 'customers' => $customers]);
     }
 
