@@ -10,13 +10,8 @@
     $create = $customer == null ? true : false;
     $linkText = isset($linkText) ? $linkText : ($create ? 'Neuen Kunden anlegen' : $customer->name);
 ?>
-<a href="#" data-reveal-id="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
-<div id="{{ $id }}"
-     class="reveal-modal tiny"
-     data-reveal
-     aria-labelledby="{{ !$create ? $customer->name : 'Neuer Kunde' }}"
-     aria-hidden="true"
-     role="dialog">
+<a data-open="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
+<div id="{{ $id }}" class="tiny reveal" data-reveal>
     @if ($edit)
         <form method="POST" action="{{ !$create ? route('customers.update', $customer->id) : route('customers.create') }}" autocomplete="off">
             {!! csrf_field() !!}

@@ -17,8 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "DataTables": "~1.10.9",
-    "font-awesome": "~4.4.0",
-    "foundation": "~5.5.3"
+    "font-awesome": "~4.4.0"
   }
 }

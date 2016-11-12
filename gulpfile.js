@@ -21,7 +21,7 @@ elixir((mix) => {
             {
                 includePaths:
                 [
-                    'bower_components/foundation/scss'
+                    'node_modules/foundation-sites/scss'
                 ]
             }
         )
@@ -33,8 +33,8 @@ elixir((mix) => {
         )
         .styles(
             [
-                'bower_components/foundation/css/normalize.min.css',
-                'bower_components/DataTables/media/css/dataTables.foundation.min.css',
+                //'bower_components/foundation/css/normalize.min.css',
+                'node_modules/datatables.net-zf/css/dataTables.foundation.css',
                 'bower_components/font-awesome/css/font-awesome.min.css',
                 'public/css/app.css'
             ],
@@ -43,35 +43,34 @@ elixir((mix) => {
         )
         .scripts(
             [
-                'bower_components/foundation/js/vendor/jquery.js',
-                'bower_components/foundation/js/vendor/fastclick.js',
-                'bower_components/foundation/js/foundation.min.js'
+                'node_modules/foundation-sites/vendor/jquery/dist/jquery.js',
+                //'bower_components/foundation/js/vendor/fastclick.js',
+                'node_modules/foundation-sites/js/foundation.core.js',
+                'node_modules/foundation-sites/js/foundation.util.box.js',
+                'node_modules/foundation-sites/js/foundation.util.keyboard.js',
+                'node_modules/foundation-sites/js/foundation.util.mediaQuery.js',
+                'node_modules/foundation-sites/js/foundation.util.motion.js',
+                'node_modules/foundation-sites/js/foundation.util.triggers.js',
+                'node_modules/foundation-sites/js/foundation.reveal.js',
             ],
             'public/js/vendor/foundation.js',
             '.'
         )
         .scripts(
             [
-                'bower_components/foundation/js/vendor/modernizr.js'
-            ],
-            'public/js/vendor/modernizr.js',
-            '.'
-        )
-        .scripts(
-            [
-                'bower_components/DataTables/media/js/jquery.dataTables.min.js',
-                'bower_components/DataTables/media/js/dataTables.foundation.min.js'
+                'node_modules/datatables.net/js/jquery.dataTables.js',
+                'node_modules/datatables.net-zf/js/dataTables.foundation.js',
             ],
             'public/js/vendor/datatables.js',
             '.'
         )
         .copy(
             [
-                'bower_components/DataTables/media/images/sort_asc.png',
-                'bower_components/DataTables/media/images/sort_asc_disabled.png',
-                'bower_components/DataTables/media/images/sort_both.png',
-                'bower_components/DataTables/media/images/sort_desc.png',
-                'bower_components/DataTables/media/images/sort_desc_disabled.png'
+                'node_modules/datatables.net-zf/images/sort_asc.png',
+                'node_modules/datatables.net-zf/images/sort_asc_disabled.png',
+                'node_modules/datatables.net-zf/images/sort_both.png',
+                'node_modules/datatables.net-zf/images/sort_desc.png',
+                'node_modules/datatables.net-zf/images/sort_desc_disabled.png'
             ],
             'public/images'
         )

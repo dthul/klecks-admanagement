@@ -6,13 +6,8 @@
     $create = $issue == null ? true : false;
     $linkText = isset($linkText) ? $linkText : ($create ? 'Neue Ausgabe anlegen' : $issue->name);
 ?>
-<a href="#" data-reveal-id="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
-<div id="{{ $id }}"
-     class="reveal-modal tiny"
-     data-reveal
-     aria-labelledby="{{ !$create ? $issue->name : 'Neue Ausgabe' }}"
-     aria-hidden="true"
-     role="dialog">
+<a data-open="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
+<div id="{{ $id }}" class="tiny reveal" data-reveal>
     <form method="POST" action="{{ !$create ? route('issues.update', $issue->id) : route('issues.create') }}" autocomplete="off">
         {!! csrf_field() !!}
         <label>Ausgabe

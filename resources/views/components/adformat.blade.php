@@ -6,13 +6,8 @@
     $create = $adformat == null ? true : false;
     $linkText = isset($linkText) ? $linkText : ($create ? 'Neues Werbeformat anlegen' : $adformat->name);
 ?>
-<a href="#" data-reveal-id="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
-<div id="{{ $id }}"
-     class="reveal-modal tiny"
-     data-reveal
-     aria-labelledby="{{ !$create ? $adformat->name : 'Neues Werbeformat' }}"
-     aria-hidden="true"
-     role="dialog">
+<a data-open="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
+<div id="{{ $id }}" class="tiny reveal" data-reveal>
     <form method="POST" action="{{ !$create ? route('adformats.update', $adformat->id) : route('adformats.create', $issue->id) }}" autocomplete="off">
         {!! csrf_field() !!}
         <label for="{{ $id }}_name">Name</label>

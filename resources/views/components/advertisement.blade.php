@@ -6,13 +6,8 @@
     $create = $advertisement == null ? true : false;
     $linkText = isset($linkText) ? $linkText : ($create ? 'Neue Anzeige anlegen' : $advertisement->adformat->name);
 ?>
-<a href="#" data-reveal-id="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
-<div id="{{ $id }}"
-     class="reveal-modal tiny"
-     data-reveal
-     aria-labelledby="{{ !$create ? $advertisement->adformat->name : 'Neue Anzeige' }}"
-     aria-hidden="true"
-     role="dialog">
+<a data-open="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
+<div id="{{ $id }}" class="tiny reveal" data-reveal>
     <form method="POST" action="{{ !$create ? route('advertisements.update', $advertisement->id) : route('advertisements.create') }}" autocomplete="off">
         {!! csrf_field() !!}
         <label>Ausgabe
