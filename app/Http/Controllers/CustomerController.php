@@ -39,7 +39,6 @@ class CustomerController extends Controller
             ],
         ]);
         $customer->update($request->only('name', 'address', 'telephone', 'email', 'comments'));
-        $customer->save();
         return redirect()->route('customers.index');
     }
 

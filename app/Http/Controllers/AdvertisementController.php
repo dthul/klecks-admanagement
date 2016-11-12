@@ -13,11 +13,12 @@ class AdvertisementController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'customer_id' => 'required|exists:customers',
-            'adformat_id' => 'required|exists:adformats',
+            'customer_id' => 'required|exists:customers,id',
+            'adformat_id' => 'required|exists:adformats,id',
         ]);
         $adformat = Adformat::findOrFail($request->input('adformat_id'));
-        $advertisement = new Advertisement($request->only('customer_id'));
+        $advertisement = new Advertisement();
+        $advertisement->customer_id = $request->input('customer_id');
         $adformat->advertisements()->save($advertisement);
         return redirect()->route('issues.issue', $adformat->issue_id);
     }
@@ -30,11 +31,10 @@ class AdvertisementController extends Controller
         $this->validate($request, [
             'adformat_id' => [
                 'required',
-                Rule::exists('adformats')->where(function ($query) use ($issue_id) { $query->where('issue_id', $issue_id); }),
+                Rule::exists('adformats', 'id')->where(function ($query) use ($issue_id) { $query->where('issue_id', $issue_id); }),
             ],
         ]);
         $advertisement->update($request->only('adformat_id'));
-        $advertisement->save();
         return redirect()->route('issues.issue', $advertisement->adformat->issue_id);
     }
 

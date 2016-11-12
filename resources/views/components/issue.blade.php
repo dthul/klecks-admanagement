@@ -19,9 +19,8 @@
             <input type="text" value="{{ !$create ? $issue->name : '' }}" placeholder="2015-2" name="name" id="{{ $id }}_name">
         </label>
         <label>Fällig am
-            <input type="date" value="{{ !$create ? $issue->due->format('Y-m-d') : '' }}" name="due" id="{{ $id }}_due" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="YYYY-MM-DD" aria-describedby="{{ $id }}_due_help_text">
+            <input type="date" value="{{ !$create ? $issue->due->format('Y-m-d') : '' }}" name="due" id="{{ $id }}_due" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="YYYY-MM-DD">
         </label>
-        <p class="help-text" id="{{ $id }}_due_help_text">Format: YYYY-MM-DD</p>
         <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
     </form>
 </div>

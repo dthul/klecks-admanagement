@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Adformat;
 use App\Customer;
 use App\Issue;
 use Illuminate\Http\Request;
@@ -51,7 +52,6 @@ class IssueController extends Controller
             'due' => 'date|required',
         ]);
         $issue->update($request->only('name', 'due'));
-        $issue->save();
         return redirect()->route('issues.issue', $issue->id);
     }
 
@@ -60,6 +60,7 @@ class IssueController extends Controller
         $issue = Issue::findOrFail($id);
         if ($issue->advertisements()->count() > 0)
             return redirect()->route('issues.index')->withErrors(['alert' => 'Die Ausgabe kann nicht gelöscht werden, da sie Anzeigen enthält.']);
+        Adformat::where('issue_id', $id)->delete();
         $issue->delete();
         return redirect()->route('issues.index');
     }
