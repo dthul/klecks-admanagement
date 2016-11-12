@@ -27,7 +27,7 @@ class IssueController extends Controller
         $issue = Issue::orderBy('created_at', 'desc')->first();
         if ($issue === null)
             return view('issues.none');
-        return view('issues.issue', ['issue' => $issue]);
+        return redirect()->route('issues.issue', $issue->id);
     }
 
     public function create(Request $request)
