@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CustomerController extends Controller
 {
     private $validation_rules = [
-        'name' => 'string|required|max:256',
         'address' => 'string|required|max:1024',
         'telephone' => 'string|max:256',
         'email' => 'string|max:1024',
@@ -22,16 +22,23 @@ class CustomerController extends Controller
 
     public function create(Request $request)
     {
-        $this->validate($request, $this->validation_rules);
-        Customer::create($request->all());
+        $this->validate($request, $this->validation_rules + [
+            'name' => 'string|required|max:256',
+        ]);
+        Customer::create($request->only('name', 'address', 'telephone', 'email', 'comments'));
         return redirect()->route('customers.index');
     }
 
     public function update(Request $request, $id)
     {
         $customer = Customer::findOrFail($id);
-        $this->validate($request, $this->validation_rules);
-        $customer->update($request->all());
+        $this->validate($request, $this->validation_rules + [
+            'name' => [
+                'string', 'required', 'max:256',
+                Rule::unique('customers')->ignore($id),
+            ],
+        ]);
+        $customer->update($request->only('name', 'address', 'telephone', 'email', 'comments'));
         $customer->save();
         return redirect()->route('customers.index');
     }

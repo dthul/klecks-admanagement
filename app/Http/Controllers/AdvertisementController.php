@@ -3,33 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Issue;
+use App\Adformat;
 use App\Advertisement;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AdvertisementController extends Controller
 {
-    public function create(Request $request, $issue_id)
+    public function create(Request $request)
     {
-        /*$issue = Issue::findOrFail($issue_id);
         $this->validate($request, [
-            'name' => 'string|required|max:255',
-            'price' => 'integer|required|max:1000000',
+            'customer_id' => 'required|exists:customers',
+            'adformat_id' => 'required|exists:adformats',
         ]);
-        $adformat = new Adformat($request->all());
-        $issue->adformats()->save($adformat);
-        return redirect()->route('issues.issue', $issue->id);*/
+        $adformat = Adformat::findOrFail($request->input('adformat_id'));
+        $advertisement = new Advertisement($request->only('customer_id'));
+        $adformat->advertisements()->save($advertisement);
+        return redirect()->route('issues.issue', $adformat->issue_id);*/
     }
 
     public function update(Request $request, $id)
     {
+        // One can only update the adformat, not the issue or the customer
         $advertisement = Advertisement::findOrFail($id);
-        /*$this->validate($request, [
-            'name' => 'string|required|max:255',
-            'price' => 'integer|required|max:1000000',
+        $current_adformat = $advertisement->adformat;
+        $this->validate($request, [
+            'adformat_id' => [
+                'required',
+                Rule::exists('adformats')->where(function ($query) { $query->where('issue_id', $current_adformat->issue_id); },
+            ],
         ]);
-        $adformat->update($request->all());
-        $adformat->save();
-        return redirect()->route('issues.issue', $adformat->issue->id);*/
+        $advertisement->update($request->only('adformat_id'));
+        $advertisement->save();
+        return redirect()->route('issues.issue', $advertisement->adformat->issue_id);*/
     }
 
     public function delete($id)

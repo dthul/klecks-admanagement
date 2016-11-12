@@ -5,14 +5,10 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Issue;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class IssueController extends Controller
 {
-    private $validation_rules = [
-        'name' => 'string|required|max:256',
-        'due' => 'date|required'
-    ];
-
     public function showAll()
     {
         $issues = Issue::orderBy('created_at', 'desc')->get();
@@ -36,16 +32,25 @@ class IssueController extends Controller
 
     public function create(Request $request)
     {
-        $this->validate($request, $this->validation_rules);
-        $issue = Issue::create($request->all());
+        $this->validate($request, [
+            'name' => 'string|required|max:256|unique:issues',
+            'due' => 'date|required',
+        ]);
+        $issue = Issue::create($request->only('name', 'due'));
         return redirect()->route('issues.issue', $issue->id);
     }
 
     public function update(Request $request, $id)
     {
         $issue = Issue::findOrFail($id);
-        $this->validate($request, $this->validation_rules);
-        $issue->update($request->all());
+        $this->validate($request, [
+            'name' => [
+                'string', 'required', 'max:256',
+                Rule::unique('issues')->ignore($id)
+            ],
+            'due' => 'date|required',
+        ]);
+        $issue->update($request->only('name', 'due'));
         $issue->save();
         return redirect()->route('issues.issue', $issue->id);
     }
