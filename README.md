@@ -16,7 +16,7 @@ Anleitung zum Bauen
 Notwendige Software installieren:
 
 ```bash
-sudo apt install php php-fpm php-mbstring php-pgsql php-xml php-tokenizer
+sudo apt install php-cli php-mbstring php-pgsql php-xml php-tokenizer
 sudo apt install npm
 sudo ln -s /usr/bin/nodejs /usb/bin/node
 sudo apt install git
@@ -51,6 +51,7 @@ Anleitung zum Deployen
 ----------------------
 
 ```bash
+apt install php-fpm php-mbstring php-pgsql php-xml php-tokenizer
 apt install postgresql
 > CREATE DATABASE klecksdev;
 > CREATE USER klecks WITH PASSWORD 'klecksdev';
