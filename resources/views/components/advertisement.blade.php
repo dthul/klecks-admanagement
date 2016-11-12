@@ -16,24 +16,29 @@
     <form method="POST" action="{{ !$create ? route('advertisements.update', $advertisement->id) : route('advertisements.create') }}" autocomplete="off">
         {!! csrf_field() !!}
         {{ $issue->name }}
-        <label for="{{ $id }}_customer">Kunde</label>
-        @if ($create)
-            <select name="customer_id" id="{{ $id }}_customer">
-                @forelse ($customers as $customer)
-                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                @empty
-                    <option value="invalid">- Kein Kunde vorhanden -</option>
-                @endforelse
+        <label>Kunde
+            @if ($create)
+                <select name="customer_id">
+                    @forelse ($customers as $customer)
+                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                    @empty
+                        <option value="invalid">- Kein Kunde vorhanden -</option>
+                    @endforelse
+                </select>
+            @else
+                <input type="text" value="{{ $advertisement->customer->name }}" readonly>
+            @endif
+        </label>
+        <label>Werbeformat
+            <select name="adformat_id">
+                @foreach ($issue->adformats as $adformat)
+                    <option value="{{ $adformat->id }}">{{ $adformat->name }}</option>
+                @endforeach
             </select>
-        @else
-            <input type="text" value="{{ $advertisement->customer->name }}" readonly>
+        </label>
+        @if (!$create)
+            <input id="{{ id }}_paid" name="paid" type="checkbox"@if ($advertisement->paid) checked @endif><label for="{{ id }}_paid">Bezahlt?</label>
         @endif
-        <label for="{{ $id }}_adformat">Werbeformat</label>
-        <select name="adformat_id" id="{{ $id }}_adformat">
-            @foreach ($issue->adformats as $adformat)
-                <option value="{{ $adformat->id }}">{{ $adformat->name }}</option>
-            @endforeach
-        </select>
         <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
     </form>
 </div>
