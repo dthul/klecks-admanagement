@@ -21,6 +21,6 @@
                 <span class="postfix">Cent</span>
             </div>
         </div>
-        <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
+        <button type="submit" class="button">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
     </form>
 </div>

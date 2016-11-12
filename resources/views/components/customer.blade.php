@@ -30,7 +30,7 @@
             <label for="{{ $id }}_comments">Kommentare</label>
             <textarea rows="4" name="comments" id="{{ $id }}_comments">{{ !$create ? $customer->comments : '' }}</textarea>
 
-            <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
+            <button type="submit" class="button">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
         </form>
     @else
         <h3>{{ $customer->name }}</h3>

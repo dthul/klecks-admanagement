@@ -38,6 +38,6 @@
             <input id="{{ $id }}_paid" name="paid" type="checkbox" value="1" @if ($advertisement->paid) checked @endif><label for="{{ $id }}_paid">Bezahlt?</label>
             <br>
         @endif
-        <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
+        <button type="submit" class="button">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
     </form>
 </div>

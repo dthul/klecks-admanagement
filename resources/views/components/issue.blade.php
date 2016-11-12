@@ -16,6 +16,6 @@
         <label>Fällig am
             <input type="date" value="{{ !$create ? $issue->due->format('Y-m-d') : '' }}" name="due" id="{{ $id }}_due" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="YYYY-MM-DD">
         </label>
-        <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
+        <button type="submit" class="button">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
     </form>
 </div>
