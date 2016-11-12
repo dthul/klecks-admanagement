@@ -26,11 +26,11 @@ class AdvertisementController extends Controller
     {
         // One can only update the adformat, not the issue or the customer
         $advertisement = Advertisement::findOrFail($id);
-        $current_adformat = $advertisement->adformat;
+        $issue_id = $advertisement->adformat->issue_id;
         $this->validate($request, [
             'adformat_id' => [
                 'required',
-                Rule::exists('adformats')->where(function ($query) { $query->where('issue_id', $current_adformat->issue_id); }),
+                Rule::exists('adformats')->where(function ($query) use ($issue_id) { $query->where('issue_id', $issue_id); }),
             ],
         ]);
         $advertisement->update($request->only('adformat_id'));
