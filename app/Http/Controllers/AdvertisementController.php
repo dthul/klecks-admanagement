@@ -33,7 +33,7 @@ class AdvertisementController extends Controller
                 'required',
                 Rule::exists('adformats', 'id')->where(function ($query) use ($issue_id) { $query->where('issue_id', $issue_id); }),
             ],
-            'paid' => 'boolean',
+            'paid' => 'boolean|required',
         ]);
         $advertisement->update($request->only('adformat_id', 'paid'));
         return redirect()->route('issues.issue', $advertisement->adformat->issue_id);

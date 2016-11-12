@@ -60,7 +60,7 @@
             <td data-search="{{ $advertisement->customer->name }}" data-order="{{ $advertisement->customer->name }}">@include('components.customer', ['customer' => $advertisement->customer])</td>
             <td>{{ $advertisement->adformat->name }}</td>
             <td data-order="{{ $advertisement->adformat->price }}">{{ $advertisement->adformat->price / 100 }}€</td>
-            <td data-order="{{ $advertisement->paid }}"><i class="fa {{ $advertisement->paid ? fa-check : fa-times }}"></i></td>
+            <td data-order="{{ $advertisement->paid }}"><i class="fa {{ $advertisement->paid ? 'fa-check' : 'fa-times' }}"></i></td>
             <td>@include('components.advertisement', ['advertisement' => $advertisement, 'issue' => $issue, 'linkText' => '', 'linkHtml' => '<i class="fa fa-pencil"></i>'])</td>
             <td><a href="{{ route('invoice', [$issue->id, $advertisement->customer->id]) }}" target="_blank"><i class="fa fa-file-text-o"></i></a></td>
             <td>

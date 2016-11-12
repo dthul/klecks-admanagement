@@ -37,7 +37,8 @@
             </select>
         </label>
         @if (!$create)
-            <input id="{{ id }}_paid" name="paid" type="checkbox"@if ($advertisement->paid) checked @endif><label for="{{ id }}_paid">Bezahlt?</label>
+            <input type="hidden" name="paid" value="0">
+            <input id="{{ $id }}_paid" name="paid" type="checkbox" value="1" @if ($advertisement->paid) checked @endif><label for="{{ $id }}_paid">Bezahlt?</label>
         @endif
         <button type="submit" class="tiny">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
     </form>
