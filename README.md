@@ -18,7 +18,7 @@ Notwendige Software installieren:
 ```bash
 sudo apt install php-cli php-mbstring php-pgsql php-xml php-tokenizer
 sudo apt install npm
-sudo ln -s /usr/bin/nodejs /usb/bin/node
+sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt install git
 sudo npm install -g bower
 sudo npm install -g gulp-cli
