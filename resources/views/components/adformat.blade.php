@@ -14,7 +14,7 @@
 		<input type="text" value="{{ !$create ? $adformat->name : '' }}" placeholder="1/2 Seite bunt" name="name" id="{{ $id }}_name">
 		<label for="{{ $id }}_price">Preis</label>
 		<div class="input-group">
-			<input type="number" value="{{ !$create ? $adformat->price : '' }}" placeholder="1000" name="price" id="{{ $id }}_price" class="input-group-field">
+			<input type="number" min="0" value="{{ !$create ? $adformat->price : '' }}" placeholder="1000" name="price" id="{{ $id }}_price" class="input-group-field">
 			<span class="input-group-label">Cent</span>
 		</div>
         <button type="submit" class="button">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
