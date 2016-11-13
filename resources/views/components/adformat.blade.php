@@ -7,7 +7,7 @@
     $linkText = isset($linkText) ? $linkText : ($create ? 'Neues Werbeformat anlegen' : $adformat->name);
 ?>
 <a data-open="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
-<div id="{{ $id }}" class="tiny reveal" data-reveal>
+<div id="{{ $id }}" class="tiny reveal" data-reveal data-close-on-click="true" data-animation-in="fade-in" data-animation-out="fade-out">
     <form method="POST" action="{{ !$create ? route('adformats.update', $adformat->id) : route('adformats.create', $issue->id) }}" autocomplete="off">
         {!! csrf_field() !!}
         <label for="{{ $id }}_name">Name</label>

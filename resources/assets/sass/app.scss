@@ -2,7 +2,8 @@
 
 @import 'settings';
 @import 'foundation';
-// @import 'motion-ui';
+@import 'mui_settings';
+@import 'motion-ui';
 
 @include foundation-global-styles;
 @include foundation-grid;
@@ -46,5 +47,13 @@
 @include foundation-float-classes;
 // @include foundation-flex-classes;
 
-// @include motion-ui-transitions;
+@include motion-ui-transitions;
 // @include motion-ui-animations;
+
+// Fix the modal reveal making the page jump (see http://foundation.zurb.com/forum/posts/38019-scrollbar-page-jump-on-reveal-open)
+body.is-reveal-open {
+    overflow: visible;
+}
+.reveal-overlay {
+    overflow-y: hidden;
+}
