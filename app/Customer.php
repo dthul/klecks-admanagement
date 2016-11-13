@@ -19,7 +19,7 @@ class Customer extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'address', 'telephone', 'email', 'comments'];
+    protected $fillable = ['name', 'address', 'telephone', 'email', 'comment'];
 
     /**
      * Get the advertisements for the customer.

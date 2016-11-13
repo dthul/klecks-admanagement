@@ -16,10 +16,12 @@ class AdvertisementController extends Controller
             'customer_id' => 'required|exists:customers,id',
             'adformat_id' => 'required|exists:adformats,id',
             'page' => 'nullable|integer|min:0',
+            'comment' => 'nullable|string|max:10000',
         ]);
         $adformat = Adformat::findOrFail($request->input('adformat_id'));
         $advertisement = new Advertisement();
         $advertisement->customer_id = $request->input('customer_id');
+        $advertisement->comment = $request->input('comment');
         $page = $request->input('page', null); 
         $advertisement->page = ($page === '') ? null : $page; 
         $adformat->advertisements()->save($advertisement);
@@ -38,10 +40,12 @@ class AdvertisementController extends Controller
             ],
             'paid' => 'boolean|required',
             'page' => 'nullable|integer|min:0',
+            'comment' => 'nullable|string|max:10000',
         ]);
         print('page: '.$request->input('page'));
         $advertisement->adformat_id = $request->input('adformat_id');
         $advertisement->paid = $request->input('paid');
+        $advertisement->comment = $request->input('comment');
         $page = $request->input('page', null); 
         $advertisement->page = ($page === '') ? null : $page; 
         $advertisement->save();

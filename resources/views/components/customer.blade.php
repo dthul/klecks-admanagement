@@ -27,8 +27,8 @@
             <label for="{{ $id }}_email">E-Mail</label>
             <input type="text" value="{{ !$create ? $customer->email : '' }}" placeholder="info{{ '@' }}servicegmbh.de" name="email" id="{{ $id }}_email">
 
-            <label for="{{ $id }}_comments">Kommentare</label>
-            <textarea rows="4" name="comments" id="{{ $id }}_comments">{{ !$create ? $customer->comments : '' }}</textarea>
+            <label for="{{ $id }}_comment">Kommentare</label>
+            <textarea rows="4" name="comment" id="{{ $id }}_comment">{{ !$create ? $customer->comment : '' }}</textarea>
 
             <button type="submit" class="button">{{ $create ? 'Anlegen' : 'Änderung speichern' }}</button>
         </form>
@@ -44,9 +44,9 @@
         <h4>E-Mail</h4>
         <p>{{ $customer->email }}</p>
         @endif
-        @if ($customer->comments !== null && $customer->comments !== '')
+        @if ($customer->comment !== null && $customer->comment !== '')
         <h4>Kommentare</h4>
-        <p>{!! nl2br(e($customer->comments)) !!}</p>
+        <p>{!! nl2br(e($customer->comment)) !!}</p>
         @endif
     @endif
 </div>

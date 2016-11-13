@@ -57,3 +57,9 @@ body.is-reveal-open {
 .reveal-overlay {
     overflow-y: hidden;
 }
+
+.ellipsize {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

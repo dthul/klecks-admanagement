@@ -33,6 +33,9 @@
                 @endforeach
             </select>
         </label>
+        <label>Kommentar
+            <textarea rows="3" name="comment">{{ !$create ? $advertisement->comment : '' }}</textarea>
+        </label>
         <label>Seite
             <input type="number" name="page" min="0" @if (!$create) value="{{ $advertisement->page }}" @endif>
         </label>

@@ -57,13 +57,14 @@
 <div class="small-12 columns">
     <h2>Anzeigen <span class="label">{{ $issue->advertisements()->count() }}</h2>
     <p>@include('components.advertisement', ['advertisement' => null, 'issue' => $issue, 'customers' => $customers])</p>
-    <table id="advertisements_table">
+    <table id="advertisements_table" data-paging="false">
     <thead>
         <tr>
             <th>Kunde</th>
             <th>Werbeformat</th>
-            <th class="text-center">Seite</th>
-            <th class="text-center">Preis</th>
+            <th class="show-for-large">Kommentar</th>
+            <th class="show-for-medium text-center">Seite</th>
+            <th class="show-for-medium text-center">Preis</th>
             <th data-searchable="false" class="text-center">Bezahlt</th>
             <th data-orderable="false" data-searchable="false"></th>
             <th data-orderable="false" data-searchable="false"></th>
@@ -75,8 +76,9 @@
         <tr>
             <td data-search="{{ $advertisement->customer->name }}" data-order="{{ $advertisement->customer->name }}">@include('components.customer', ['customer' => $advertisement->customer])</td>
             <td>{{ $advertisement->adformat->name }}</td>
-            <td class="text-right">{{ $advertisement->page }}</td>
-            <td data-order="{{ $advertisement->adformat->price }}" class="text-right">{{ number_format($advertisement->adformat->price / 100, 2, ',', '.') }} €</td>
+            <td class="show-for-large ellipsize" style="max-width: 18em;">{{ $advertisement->comment }}</td>
+            <td class="show-for-medium text-right">{{ $advertisement->page }}</td>
+            <td data-order="{{ $advertisement->adformat->price }}" class="show-for-medium text-right">{{ number_format($advertisement->adformat->price / 100, 2, ',', '.') }} €</td>
             <td data-order="{{ $advertisement->paid }}" class="text-center"><i class="fa {{ $advertisement->paid ? 'fa-check' : 'fa-times' }}"></i></td>
             <td>@include('components.advertisement', ['advertisement' => $advertisement, 'issue' => $issue, 'linkText' => '', 'linkHtml' => '<i class="fa fa-pencil"></i>'])</td>
             <td><a href="{{ route('invoice', [$issue->id, $advertisement->customer->id]) }}" target="_blank"><i class="fa fa-file-text-o"></i></a></td>

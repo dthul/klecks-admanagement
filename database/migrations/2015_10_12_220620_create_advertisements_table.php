@@ -20,7 +20,7 @@ class CreateAdvertisementsTable extends Migration
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->integer('adformat_id')->unsigned()->index();
             $table->foreign('adformat_id')->references('id')->on('adformats');
-            $table->text('comments')->nullable();
+            $table->text('comment')->nullable();
             $table->boolean('paid')->default(false);
             $table->integer('page')->unsigned()->nullable();
         });

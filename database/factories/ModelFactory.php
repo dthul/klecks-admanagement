@@ -36,7 +36,7 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'address' => $faker->address,
         'telephone' => $faker->phoneNumber,
         'email' => $faker->email,
-        'comments' => $faker->text,
+        'comment' => $faker->text,
     ];
 });
 
@@ -49,7 +49,8 @@ $factory->define(App\Adformat::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Advertisement::class, function (Faker\Generator $faker) {
     return [
-        'comments' => $faker->text,
+        'comment' => $faker->text,
         'paid' => $faker->boolean(50),
+        'page' => $faker->numberBetween(1, 42),
     ];
 });

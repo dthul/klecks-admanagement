@@ -12,7 +12,7 @@ class CustomerController extends Controller
         'address' => 'string|required|max:1024',
         'telephone' => 'string|max:256',
         'email' => 'string|max:1024',
-        'comments' => 'string|max:10000'
+        'comment' => 'string|max:10000'
     ];
 
     public function showAll()
@@ -25,7 +25,7 @@ class CustomerController extends Controller
         $this->validate($request, $this->validation_rules + [
             'name' => 'string|required|max:256',
         ]);
-        Customer::create($request->only('name', 'address', 'telephone', 'email', 'comments'));
+        Customer::create($request->only('name', 'address', 'telephone', 'email', 'comment'));
         return redirect()->route('customers.index');
     }
 
@@ -38,7 +38,7 @@ class CustomerController extends Controller
                 Rule::unique('customers')->ignore($id),
             ],
         ]);
-        $customer->update($request->only('name', 'address', 'telephone', 'email', 'comments'));
+        $customer->update($request->only('name', 'address', 'telephone', 'email', 'comment'));
         return redirect()->route('customers.index');
     }
 
