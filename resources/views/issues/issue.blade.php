@@ -55,9 +55,9 @@
     </table>
 </div>
 <div class="small-12 columns">
-    <h2>Anzeigen <span class="label">{{ $issue->advertisements()->count() }}</h2>
+    <h2>Anzeigen</h2>
     <p>@include('components.advertisement', ['advertisement' => null, 'issue' => $issue, 'customers' => $customers])</p>
-    <table id="advertisements_table" data-paging="false">
+    <table id="advertisements_table" data-paging="false" data-searching="false">
     <thead>
         <tr>
             <th>Kunde</th>
