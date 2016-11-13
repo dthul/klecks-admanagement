@@ -15,10 +15,13 @@ class AdvertisementController extends Controller
         $this->validate($request, [
             'customer_id' => 'required|exists:customers,id',
             'adformat_id' => 'required|exists:adformats,id',
+            'page' => 'nullable|integer|min:0',
         ]);
         $adformat = Adformat::findOrFail($request->input('adformat_id'));
         $advertisement = new Advertisement();
         $advertisement->customer_id = $request->input('customer_id');
+        $page = $request->input('page', null); 
+        $advertisement->page = ($page === '') ? null : $page; 
         $adformat->advertisements()->save($advertisement);
         return redirect()->route('issues.issue', $adformat->issue_id);
     }
@@ -34,8 +37,14 @@ class AdvertisementController extends Controller
                 Rule::exists('adformats', 'id')->where(function ($query) use ($issue_id) { $query->where('issue_id', $issue_id); }),
             ],
             'paid' => 'boolean|required',
+            'page' => 'nullable|integer|min:0',
         ]);
-        $advertisement->update($request->only('adformat_id', 'paid'));
+        print('page: '.$request->input('page'));
+        $advertisement->adformat_id = $request->input('adformat_id');
+        $advertisement->paid = $request->input('paid');
+        $page = $request->input('page', null); 
+        $advertisement->page = ($page === '') ? null : $page; 
+        $advertisement->save();
         return redirect()->route('issues.issue', $advertisement->adformat->issue_id);
     }
 

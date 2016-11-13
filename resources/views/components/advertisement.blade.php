@@ -33,6 +33,9 @@
                 @endforeach
             </select>
         </label>
+        <label>Seite
+            <input type="number" name="page" min="0" @if (!$create) value="{{ $advertisement->page }}" @endif>
+        </label>
         @if (!$create)
             <input type="hidden" name="paid" value="0">
             <input id="{{ $id }}_paid" name="paid" type="checkbox" value="1" @if ($advertisement->paid) checked @endif><label for="{{ $id }}_paid">Bezahlt?</label>

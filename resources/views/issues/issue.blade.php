@@ -62,6 +62,7 @@
         <tr>
             <th>Kunde</th>
             <th>Werbeformat</th>
+            <th class="text-center">Seite</th>
             <th class="text-center">Preis</th>
             <th data-searchable="false" class="text-center">Bezahlt</th>
             <th data-orderable="false" data-searchable="false"></th>
@@ -69,22 +70,12 @@
             <th data-orderable="false" data-searchable="false"></th>
         </tr>
     </thead>
-    <tfoot>
-        <tr>
-            <th>Kunde</th>
-            <th>Werbeformat</th>
-            <th>Preis</th>
-            <th>Bezahlt</th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </tfoot>
     <tbody>
     @foreach($issue->advertisements as $advertisement)
         <tr>
             <td data-search="{{ $advertisement->customer->name }}" data-order="{{ $advertisement->customer->name }}">@include('components.customer', ['customer' => $advertisement->customer])</td>
             <td>{{ $advertisement->adformat->name }}</td>
+            <td class="text-right">{{ $advertisement->page }}</td>
             <td data-order="{{ $advertisement->adformat->price }}" class="text-right">{{ number_format($advertisement->adformat->price / 100, 2, ',', '.') }} €</td>
             <td data-order="{{ $advertisement->paid }}" class="text-center"><i class="fa {{ $advertisement->paid ? 'fa-check' : 'fa-times' }}"></i></td>
             <td>@include('components.advertisement', ['advertisement' => $advertisement, 'issue' => $issue, 'linkText' => '', 'linkHtml' => '<i class="fa fa-pencil"></i>'])</td>

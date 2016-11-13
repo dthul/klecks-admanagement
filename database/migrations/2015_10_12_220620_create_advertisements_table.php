@@ -22,6 +22,7 @@ class CreateAdvertisementsTable extends Migration
             $table->foreign('adformat_id')->references('id')->on('adformats');
             $table->text('comments')->nullable();
             $table->boolean('paid')->default(false);
+            $table->integer('page')->unsigned()->nullable();
         });
     }
 

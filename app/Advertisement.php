@@ -20,7 +20,7 @@ class Advertisement extends Model
      *
      * @var array
      */
-    protected $fillable = ['comments', 'paid', 'adformat_id'];
+    protected $fillable = ['comments', 'paid', 'adformat_id', 'page'];
 
     /**
      * Get the customer that owns the advertisement.
