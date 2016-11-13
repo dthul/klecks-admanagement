@@ -40,7 +40,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($issue->adformats as $adformat)
+    @foreach($issue->adformats()->orderBy('name')->get() as $adformat)
         <tr>
             <td>{{ $adformat->name }}</td>
             <td>{{ number_format($adformat->price / 100, 2, ',', '.') }} €</td>
