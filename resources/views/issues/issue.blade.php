@@ -3,6 +3,7 @@
 @section('title', 'Ausgabe '.$issue->name)
 
 @section('content')
+<div class="large-12 columns">
     <h1>Ausgabe {{ $issue->name }} @include('components.issue', ['issue' => $issue, 'linkText' => '', 'linkHtml' => '<i class="fa fa-pencil"></i>'])</h1>
     <p>Fällig am {{ $issue->due->formatLocalized('%A, %d. %B %Y') }}</p>
     <h2>Werbeformate</h2>
@@ -72,6 +73,7 @@
     @endforeach
     </tbody>
     </table>
+</div>
 @stop
 
 @section('end')

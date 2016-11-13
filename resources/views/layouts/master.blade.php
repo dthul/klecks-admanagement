@@ -20,7 +20,7 @@
 		</ul>
     </div>
 </div>
-<div class="container row">
+<div class="row">
     @if (count($errors) > 0)
         @foreach ($errors->all() as $error)
         <div data-alert class="alert-box alert">
