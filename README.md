@@ -16,11 +16,10 @@ Anleitung zum Bauen
 Notwendige Software installieren:
 
 ```bash
-sudo apt install php-cli php-mbstring php-pgsql php-xml php-tokenizer
+sudo apt install php-cli php-mbstring [php-pgsql|php-sqlite3|php-mysql] php-xml php-tokenizer
 sudo apt install npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo apt install git
-sudo npm install -g bower
 sudo npm install -g gulp-cli
 ```
 
@@ -31,7 +30,6 @@ Abhängigkeiten installieren:
 ```bash
 composer install
 npm install
-bower install
 ```
 
 Das Projekt mit Gulp bauen:
@@ -52,13 +50,25 @@ Anleitung zum Deployen
 
 ```bash
 apt install php-fpm php-mbstring php-pgsql php-xml php-tokenizer
+```
+
+Postgres einrichten:
+
+```bash
 apt install postgresql
 > CREATE DATABASE klecksdev;
 > CREATE USER klecks WITH PASSWORD 'klecksdev';
 > GRANT ALL PRIVILEGES ON DATABASE klecksdev TO klecks;
 ```
 
-Datenbank einrichten (Achtung, löscht Daten, nur beim ersten Mal oder im Development benutzen):
+Oder für sqlite:
+
+```bash
+sqlite3 /path/to/db.sqlite
+> .exit
+```
+
+Datenbanktabellen einrichten (Achtung, löscht Daten, nur beim ersten Mal oder im Development benutzen):
 
 ```bash
 php artisan migrate:refresh --seed
