@@ -33,9 +33,8 @@ elixir((mix) => {
         )
         .styles(
             [
-                //'bower_components/foundation/css/normalize.min.css',
                 'node_modules/datatables.net-zf/css/dataTables.foundation.css',
-                'bower_components/font-awesome/css/font-awesome.min.css',
+                'node_modules/font-awesome/css/font-awesome.min.css',
                 'public/css/app.css'
             ],
             'public/css/all.css',
@@ -76,7 +75,7 @@ elixir((mix) => {
         )
         .copy(
             [
-                'bower_components/font-awesome/fonts'
+                'node_modules/font-awesome/fonts'
             ],
             'public/fonts'
         )
