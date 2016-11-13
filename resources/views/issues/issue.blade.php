@@ -7,6 +7,27 @@
 <div class="small-12 columns">
     <h1>Ausgabe {{ $issue->name }} @include('components.issue', ['issue' => $issue, 'linkText' => '', 'linkHtml' => '<i class="fa fa-pencil"></i>'])</h1>
 </div>
+<div class="small-12 large-7 columns">
+    <!-- Statistics Block Grid -->
+    <div class="row small-up-1 medium-up-2">
+        <div class="column">
+            <p>Fällig</p>
+            <div class="stat">{{ $issue->due->formatLocalized('%d.%m.%y') }}</div>
+        </div>
+        <div class="column">
+            <p>Anzeigen</p>
+            <div class="stat">{{ count($issue->advertisements) }}</div>
+        </div>
+        <div class="column">
+            <p>Seiten</p>
+            <div class="stat">TODO</div>
+        </div>
+        <div class="column">
+            <p>Einnahmen</p>
+            <div class="stat">{{ number_format($issue->advertisements->pluck('adformat')->pluck('price')->sum() / 100, 2, ',', '.') }} €</div>
+        </div>
+    </div>
+</div>
 <div class="small-12 large-5 columns">
     <h2>Werbeformate</h2>
     <table>
