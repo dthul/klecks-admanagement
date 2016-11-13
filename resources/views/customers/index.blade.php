@@ -3,7 +3,11 @@
 @section('title', 'Kunden')
 
 @section('content')
+<div class="row">
+<div class="small-12 columns">
     <h1>Kunden</h1>
+</div>
+<div class="small-12 columns">
     @include('components.customer', ['customer' => null, ''])
     <table id="customers_table">
     <thead>
@@ -36,6 +40,8 @@
     @endforeach
     </tbody>
     </table>
+</div>
+</div>
 @stop
 
 @section('end')

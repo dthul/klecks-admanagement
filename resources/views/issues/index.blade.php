@@ -3,7 +3,11 @@
 @section('title', 'Ausgaben')
 
 @section('content')
+<div class="row">
+<div class="small-12 columns">
     <h1>Ausgaben</h1>
+</div>
+<div class="small-12 columns">
     <p>@include('components.issue', ['issue' => null])</p>
 
     <table>
@@ -34,4 +38,6 @@
         @endforeach
         </tbody>
     </table>
+</div>
+</div>
 @stop

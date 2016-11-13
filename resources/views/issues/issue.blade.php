@@ -3,9 +3,11 @@
 @section('title', 'Ausgabe '.$issue->name)
 
 @section('content')
-<div class="large-12 columns">
+<div class="row">
+<div class="small-12 columns">
     <h1>Ausgabe {{ $issue->name }} @include('components.issue', ['issue' => $issue, 'linkText' => '', 'linkHtml' => '<i class="fa fa-pencil"></i>'])</h1>
-    <p>Fällig am {{ $issue->due->formatLocalized('%A, %d. %B %Y') }}</p>
+</div>
+<div class="small-12 large-5 columns">
     <h2>Werbeformate</h2>
     <table>
     <thead>
@@ -30,6 +32,8 @@
     </tr>
     </tbody>
     </table>
+</div>
+<div class="small-12 columns">
     <h2>Anzeigen <span class="label">{{ $issue->advertisements()->count() }}</h2>
     <p>@include('components.advertisement', ['advertisement' => null, 'issue' => $issue, 'customers' => $customers])</p>
     <table id="advertisements_table">
@@ -73,6 +77,7 @@
     @endforeach
     </tbody>
     </table>
+</div>
 </div>
 @stop
 
