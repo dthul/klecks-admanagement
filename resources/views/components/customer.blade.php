@@ -11,7 +11,7 @@
     $linkText = isset($linkText) ? $linkText : ($create ? 'Neuen Kunden anlegen' : $customer->name);
 ?>
 <a data-open="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
-<div id="{{ $id }}" class="tiny reveal" data-reveal>
+<div id="{{ $id }}" class="tiny reveal" data-reveal data-close-on-click="true" data-animation-in="fade-in" data-animation-out="fade-out">
     @if ($edit)
         <form method="POST" action="{{ !$create ? route('customers.update', $customer->id) : route('customers.create') }}" autocomplete="off">
             {!! csrf_field() !!}
