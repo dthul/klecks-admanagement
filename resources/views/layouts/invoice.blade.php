@@ -41,7 +41,7 @@
     <thead>
         <tr>
             <th>Werbeformat</th>
-            <th>Kommentar</th>
+            <th>Seite</th>
             <th>Preis</th>
         </tr>
     </thead>
@@ -50,7 +50,7 @@
     @foreach ($advertisements as $advertisement)
         <tr>
             <td>{{ $advertisement->adformat->name }}</td>
-            <td>{{ $advertisement->comments }}</td>
+            <td>{{ $advertisement->page }}</td>
             <td>{{ $advertisement->adformat->price / 100 }}€</td>
         </tr>
         <?php $total += $advertisement->adformat->price; ?>
