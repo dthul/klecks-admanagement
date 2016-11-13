@@ -40,10 +40,16 @@ elixir((mix) => {
             'public/css/all.css',
             '.'
         )
-        .scripts(
+        .copy(
+            'node_modules/jquery/dist/jquery.min.js',
+            'public/js/vendor/jquery.min.js'
+        )
+        .copy(
+            'node_modules/what-input/dist/what-input.min.js',
+            'public/js/vendor/what-input.min.js'
+        )
+        .webpack(
             [
-                'node_modules/foundation-sites/vendor/jquery/dist/jquery.js',
-                //'bower_components/foundation/js/vendor/fastclick.js',
                 'node_modules/foundation-sites/js/foundation.core.js',
                 'node_modules/foundation-sites/js/foundation.util.box.js',
                 'node_modules/foundation-sites/js/foundation.util.keyboard.js',
@@ -53,7 +59,13 @@ elixir((mix) => {
                 'node_modules/foundation-sites/js/foundation.reveal.js',
             ],
             'public/js/vendor/foundation.js',
-            '.'
+            '.',
+            {
+                // The default options exclude everything in the node_modules folder (https://github.com/JeffreyWay/laravel-elixir-webpack-official/blob/master/src/index.js)
+                module: {
+                    loaders: [{ test: /\.js$/, loader: 'buble' }] 
+                }
+            }
         )
         .scripts(
             [

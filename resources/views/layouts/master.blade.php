@@ -31,6 +31,8 @@
     @endif
     @yield('content')
 </div>
+<script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+<script src="{{ asset('js/vendor/what-input.min.js') }}"></script>
 <script src="{{ asset('js/vendor/foundation.js') }}"></script>
 <script src="{{ asset('js/vendor/datatables.js') }}"></script>
 <script>
