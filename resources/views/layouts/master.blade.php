@@ -23,14 +23,18 @@
 <div class="row">
     @if (count($errors) > 0)
         @foreach ($errors->all() as $error)
-        <div data-alert class="alert-box alert">
-            {{ $error }}
-            <a href="#" class="close">&times;</a>
+        <div class="small-12 columns">
+            <div class="alert callout" data-closable>
+                {{ $error }}
+                <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
         @endforeach
     @endif
-    @yield('content')
 </div>
+@yield('content')
 <script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
 <script src="{{ asset('js/vendor/what-input.min.js') }}"></script>
 <script src="{{ asset('js/vendor/foundation.js') }}"></script>
