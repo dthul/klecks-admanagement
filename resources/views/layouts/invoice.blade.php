@@ -18,7 +18,10 @@
             <p>TMG&#x2003;Freiherr-vom-Stein-Str. 14&#x2003;54550 Daun</p>
         </address>
         <address class="recipient">
-            <p>{!! nl2br(e($customer->address)) !!}</p>
+            <p>
+                {{ $customer->name }}<br>
+                {!! nl2br(e($customer->address)) !!}
+            </p>
         </address>
     </div>
     <div class="info">
