@@ -1,9 +1,9 @@
 // See: https://de.wikipedia.org/wiki/DIN_5008 and https://de.wikipedia.org/wiki/Briefumschlag
 
-/* reset */
-
 $debug: false !default;
 $footer-height: 30mm;
+
+// Base style reset
 
 * {
   border: 0;
@@ -21,73 +21,21 @@ $footer-height: 30mm;
   vertical-align: top;
 }
 
-p {
+p:not(:first-child) {
   margin-top: 1em;
 }
 
-p:first-child {
-  margin-top: 0;
-}
+// Utility classes
 
 .text-right {
   text-align: right !important;
 }
 
-table {
-  // table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-
-  th {
-    font-weight: bold;
-  }
-}
-
-table.listing {
-  @if $debug {
-    background-color: white;
-  }
-
-  font-size: 10pt;
-
-  &:not(:first-child) {
-    margin-top: 1em;
-  }
-
-  th, td {
-    padding: 2mm;
-  }
-
-  tr {
-    border-style: solid;
-    border-color: #DDD;
-  }
-
-  thead>tr {
-    background: #EEE;
-    border-bottom-width: 0.4mm;
-    text-align: left;
-  }
-
-  tbody>tr {
-    background: white;
-    border-bottom-width: 0.2mm;
-  }
-
-  tbody>tr:last-child {
-    border-bottom-width: 0.4mm;
-  }
-
-  tfoot {
-    font-weight: bold;
-  }
-}
-
-/* page */
+// Invoice styling
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 12pt;
+  font-size: 11pt;
   padding: 1cm;
   background: #999;
 }
@@ -100,7 +48,7 @@ body {
   overflow: hidden;
   padding: 1cm;
   background: white;
-  box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2.5cm -0.6cm rgba(0, 0, 0, 0.5);
   position: relative; // To make absolute positioning on the children work
 }
 
@@ -154,10 +102,12 @@ body {
     }
   }
 
+  // At most 6 lines
   address.recipient {
     top: 17.7mm;
     height: 27.3mm;
     width: 80mm;
+    font-size: 9pt;
     @if $debug {
       background-color: #DDD;
     }
@@ -189,6 +139,53 @@ body {
   .subject {
     font-weight: bold;
     margin-bottom: 3em;
+  }
+}
+
+table.listing {
+  @if $debug {
+    background-color: white;
+  }
+
+  font-size: 10pt;
+
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    font-weight: bold;
+  }
+
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+
+  th, td {
+    padding: 2mm;
+  }
+
+  tr {
+    border-style: solid;
+    border-color: #DDD;
+  }
+
+  thead>tr {
+    background: #EEE;
+    border-bottom-width: 0.4mm;
+    text-align: left;
+  }
+
+  tbody>tr {
+    background: white;
+    border-bottom-width: 0.2mm;
+  }
+
+  tbody>tr:last-child {
+    border-bottom-width: 0.4mm;
+  }
+
+  tfoot {
+    font-weight: bold;
   }
 }
 
@@ -245,27 +242,25 @@ hr.page-marker-2 {
 
 hr.page-marker-3 {
   bottom: 87mm;
-  }
-
-/* header */
+}
 
 @media print {
   * {
     -webkit-print-color-adjust: exact;
   }
+
   body {
     background: none;
     padding: 0;
   }
+
   .page {
     box-shadow: none;
     margin: 0;
   }
-  span:empty {
-    display: none;
-  }
 }
 
 @page {
+  size: A4 portrait;
   margin: 0;
 }
