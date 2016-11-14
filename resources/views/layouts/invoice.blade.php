@@ -34,7 +34,7 @@
         <p>
         <p>
             Tel.: +49 (6592) 98350-35<br>
-            klecks@???
+            derklecks-tmg@gmx.de
         </p>
         <p>
             Datum: {{ date('Y-m-d') }}
@@ -97,10 +97,10 @@
         </p>
         <p>
             Bank: Kreissparkasse Vulkaneifel<br>
-            IBAN: DE11 9900 0000 8888 7777 00
+            IBAN: DE32 5865 1240 0000 1095 87
         </p>
         <p>
-            Email: klecks@???<br>
+            Email: derklecks-tmg@gmx.de<br>
             Telefon: +49 (6592) 98350-35
         </p>
     </div>
