@@ -15,7 +15,7 @@
     </div>
     <div class="window">
         <address class="sender">
-            <p>TMG - Freiherr-vom-Stein-Str. 14 - 54550 Daun</p>
+            <p>TMG&#x2003;Freiherr-vom-Stein-Str. 14&#x2003;54550 Daun</p>
         </address>
         <address class="recipient">
             <p>{!! nl2br(e($customer->address)) !!}</p>
