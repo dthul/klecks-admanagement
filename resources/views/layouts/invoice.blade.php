@@ -12,6 +12,7 @@
 <div class="page">
     <div class="header">
         <h1>Der Klecks</h1>
+        @include('static.klecks')
     </div>
     <div class="window">
         <address class="sender">

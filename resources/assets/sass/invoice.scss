@@ -67,6 +67,15 @@ body {
   h1 {
     font-size: 20pt;
     font-weight: bold;
+    margin-left: 1em;
+  }
+
+  svg {
+    height: 100%;
+    order: -1;
+    path {
+      fill: black !important;
+    }
   }
 }
 
