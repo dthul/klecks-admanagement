@@ -69,7 +69,7 @@
         <tfoot>
             <tr>
                 <td></td>
-                <td colspan="2" class="text-right">Summe {{ $advertisements->pluck('adformat')->pluck('price')->sum() / 100 }} €</td>
+                <td colspan="2" class="text-right">Summe&#x2003;{{ $advertisements->pluck('adformat')->pluck('price')->sum() / 100 }} €</td>
             </tr>
         </tfoot>
         </table>
@@ -79,7 +79,7 @@
         <p>
             Wir danken recht herzlich für Ihren Auftrag.
         </p>
-        <p>
+        <p class="valediction">
             Mit freundlichen Grüßen,<br>
             Die Redaktion des Klecks
         </p>
