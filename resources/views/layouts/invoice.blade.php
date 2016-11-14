@@ -12,7 +12,6 @@
 <div class="page">
     <div class="header">
         <h1>Der Klecks</h1>
-        <span><img alt="" src="logo.png"></span>
     </div>
     <div class="window">
         <address class="sender">

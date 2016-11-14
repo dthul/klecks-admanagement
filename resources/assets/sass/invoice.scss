@@ -2,7 +2,7 @@
 
 /* reset */
 
-$debug: true !default;
+$debug: false !default;
 $footer-height: 30mm;
 
 * {
@@ -110,8 +110,15 @@ body {
   right: 20mm;
   top: 10mm;
   height: 30mm;
+  display: flex;
+  align-items: center;
   @if $debug {
     background-color: #BBB;
+  }
+
+  h1 {
+    font-size: 20pt;
+    font-weight: bold;
   }
 }
 
@@ -217,6 +224,28 @@ body {
     }
   }
 }
+
+hr[class|=page-marker] {
+  position: absolute;
+  left: 0;
+  border-style: none;
+  width: 10mm;
+  height: 0.2mm;
+  background-color: #999;
+}
+
+hr.page-marker-1 {
+  top: 105mm;
+}
+
+hr.page-marker-2 {
+  top: 148.5mm;
+  width: 15mm;
+}
+
+hr.page-marker-3 {
+  bottom: 87mm;
+  }
 
 /* header */
 
