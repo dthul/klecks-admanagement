@@ -58,21 +58,16 @@ body {
   right: 20mm;
   top: 10mm;
   height: 30mm;
-  display: flex;
-  align-items: center;
   @if $debug {
     background-color: #BBB;
   }
 
   h1 {
-    font-size: 20pt;
-    font-weight: bold;
-    margin-left: 1em;
+    display: none;
   }
 
   svg {
     height: 100%;
-    order: -1;
     path {
       fill: black !important;
     }
