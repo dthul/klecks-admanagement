@@ -68,6 +68,10 @@ sqlite3 /path/to/db.sqlite
 > .exit
 ```
 
+Konfigurationen in `config` überprüfen.
+
+`.env.example` nach `.env` kopieren und anpassen.
+
 Datenbanktabellen einrichten (Achtung, löscht Daten, nur beim ersten Mal oder im Development benutzen):
 
 ```bash
