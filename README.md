@@ -68,9 +68,17 @@ sqlite3 /path/to/db.sqlite
 > .exit
 ```
 
+Auf der lokalen Maschine alle Dependencies installieren (`composer install`, `npm install`) und die App bauen (`gulp --production`). Dann deployen (`./deploy.sh`).
+
+`.env.example` nach `.env` kopieren und anpassen.
+
+```bash
+php artisan key:generate
+```
+
 Datenbanktabellen einrichten (Achtung, löscht Daten, nur beim ersten Mal oder im Development benutzen):
 
 ```bash
-php artisan migrate:refresh --seed
+php artisan migrate:refresh
 ```
 
