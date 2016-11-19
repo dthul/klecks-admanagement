@@ -1,0 +1,7 @@
+*.log
+*.gitignore
+*.gitkeep
+*.sqlite
+sessions/*
+cache/*
+storage/**/*.php
