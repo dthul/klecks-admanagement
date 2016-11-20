@@ -35,7 +35,7 @@
             <td>{{ $customer->telephone }}</td>
             <td>{{ $customer->email }}</td>
             <td>@include('components.customer', ['customer' => $customer, 'edit' => true, 'linkText' => '', 'linkHtml' => '<i class="fa fa-pencil"></i>'])</td>
-            <td><form method="POST" action="{{ route('customers.delete', $customer->id) }}">{!! csrf_field() !!}<a href="#" onclick="$(this).closest('form').submit()"><i class="fa fa-trash-o"></i></a></form></td>
+            <td><form method="POST" action="{{ route('customers.delete', $customer->id) }}">{{ csrf_field() }}<a href="#" onclick="$(this).closest('form').submit()"><i class="fa fa-trash-o"></i></a></form></td>
         </tr>
     @endforeach
     </tbody>

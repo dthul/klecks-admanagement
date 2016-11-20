@@ -33,7 +33,7 @@
                 <td><a href="{{ route('issues.issue', $issue->id) }}">{{ $issue->name }}</a></td>
                 <td>{{ $issue->created_at->formatLocalized('%A, %d. %B %Y') }}</td>
                 <td>{{ $issue->due->formatLocalized('%A, %d. %B %Y') }}</td>
-                <td><form method="POST" action="{{ route('issues.delete', $issue->id) }}">{!! csrf_field() !!}<a href="#" onclick="$(this).closest('form').submit()"><i class="fa fa-trash-o"></i></a></form></td>
+                <td><form method="POST" action="{{ route('issues.delete', $issue->id) }}">{{ csrf_field() }}<a href="#" onclick="$(this).closest('form').submit()"><i class="fa fa-trash-o"></i></a></form></td>
             </tr>
         @endforeach
         </tbody>

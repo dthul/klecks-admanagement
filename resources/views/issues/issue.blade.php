@@ -45,7 +45,7 @@
             <td>{{ $adformat->name }}</td>
             <td>{{ number_format($adformat->price / 100, 2, ',', '.') }} €</td>
             <td>@include('components.adformat', ['adformat' => $adformat, 'linkText' => '', 'linkHtml' => '<i class="fa fa-pencil"></i>'])</td>
-            <td><form method="POST" action="{{ route('adformats.delete', $adformat->id) }}">{!! csrf_field() !!}<a href="#" onclick="$(this).closest('form').submit()"><i class="fa fa-trash-o"></i></a></form></td>
+            <td><form method="POST" action="{{ route('adformats.delete', $adformat->id) }}">{{ csrf_field() }}<a href="#" onclick="$(this).closest('form').submit()"><i class="fa fa-trash-o"></i></a></form></td>
         </tr>
     @endforeach
     <tr>
@@ -84,7 +84,7 @@
             <td><a href="{{ route('invoice', [$issue->id, $advertisement->customer->id]) }}" target="_blank"><i class="fa fa-file-text-o"></i></a></td>
             <td>
             @if (!$advertisement->paid)
-                <form method="POST" action="{{ route('advertisements.delete', $advertisement->id) }}">{!! csrf_field() !!}<a href="#" onclick="$(this).closest('form').submit()"><i class="fa fa-trash-o"></i></a></form>
+                <form method="POST" action="{{ route('advertisements.delete', $advertisement->id) }}">{{ csrf_field() }}<a href="#" onclick="$(this).closest('form').submit()"><i class="fa fa-trash-o"></i></a></form>
             @endif
             </td>
         </tr>

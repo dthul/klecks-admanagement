@@ -14,7 +14,7 @@
 <div id="{{ $id }}" class="tiny reveal" data-reveal data-close-on-click="true" data-animation-in="fade-in" data-animation-out="fade-out">
     @if ($edit)
         <form method="POST" action="{{ !$create ? route('customers.update', $customer->id) : route('customers.create') }}" autocomplete="off">
-            {!! csrf_field() !!}
+            {{ csrf_field() }}
             <label for="{{ $id }}_name">Name*</label>
             <input type="text" value="{{ !$create ? $customer->name : '' }}" placeholder="Service GmbH" name="name" id="{{ $id }}_name">
 

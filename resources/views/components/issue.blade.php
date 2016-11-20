@@ -9,7 +9,7 @@
 <a data-open="{{ $id }}">{{ $linkText }}{!! isset($linkHtml) ? $linkHtml : '' !!}</a>
 <div id="{{ $id }}" class="tiny reveal" data-reveal data-close-on-click="true" data-animation-in="fade-in" data-animation-out="fade-out">
     <form method="POST" action="{{ !$create ? route('issues.update', $issue->id) : route('issues.create') }}" autocomplete="off">
-        {!! csrf_field() !!}
+        {{ csrf_field() }}
         <label>Ausgabe
             <input type="text" value="{{ !$create ? $issue->name : '' }}" placeholder="2015-2" name="name" id="{{ $id }}_name">
         </label>
