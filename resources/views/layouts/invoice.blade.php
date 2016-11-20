@@ -1,12 +1,13 @@
-<!doctype html>
+<?php
+    $invoice_number = $issue->id.'-'.$customer->id;
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Rechnung</title>
+    <title>Rechnung {{ $invoice_number }}</title>
     <link rel="stylesheet" href="{{ asset('css/invoice.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
-    <link rel="license" href="http://www.opensource.org/licenses/mit-license/">
-    {{--<script src="{{ asset('js/invoice.js') }}"></script>--}}
 </head>
 <body>
 <div class="page">
@@ -42,7 +43,7 @@
     </div>
     <div class="text">
         <p class="subject">
-            Rechnung Nr. {{ $issue->id }}-{{ $customer->id }}
+            Rechnung Nr. {{ $invoice_number }}
         </p>
         <p class="salutation">
             Sehr geehrter Werbekunde,
