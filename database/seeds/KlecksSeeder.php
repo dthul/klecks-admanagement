@@ -27,5 +27,10 @@ class KlecksSeeder extends Seeder
             $ad->adformat_id = rand(1, 12);
             $ad->save();
           });
+        $user = new App\User();
+        $user->name = 'Daniel';
+        $user->email = 'daniel.thul@gmail.com';
+        $user->password = bcrypt('password');
+        $user->save();
     }
 }
