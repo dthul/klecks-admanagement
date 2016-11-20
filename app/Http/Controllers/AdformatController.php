@@ -9,6 +9,11 @@ use Illuminate\Validation\Rule;
 
 class AdformatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create(Request $request, $issue_id)
     {
         $issue = Issue::findOrFail($issue_id);

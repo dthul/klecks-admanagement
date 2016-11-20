@@ -10,6 +10,11 @@ use Illuminate\Validation\Rule;
 
 class IssueController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function showAll()
     {
         $issues = Issue::orderBy('created_at', 'desc')->get();

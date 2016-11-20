@@ -53,3 +53,5 @@ Route::post('/advertisements/{id}/delete', 'AdvertisementController@delete')->na
 
 // Invoice
 Route::get('/issues/{issue_id}/customers/{customer_id}/invoice', 'InvoiceController@show')->name('invoice');
+
+Auth::routes();

@@ -10,6 +10,11 @@ use Illuminate\Validation\Rule;
 
 class AdvertisementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create(Request $request)
     {
         $this->validate($request, [

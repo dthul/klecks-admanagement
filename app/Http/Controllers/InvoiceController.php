@@ -8,6 +8,11 @@ use App\Advertisement;
 
 class InvoiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show($issue_id, $customer_id)
     {
         $issue = Issue::findOrFail($issue_id);

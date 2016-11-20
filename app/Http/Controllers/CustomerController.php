@@ -15,6 +15,11 @@ class CustomerController extends Controller
         'comment' => 'string|max:10000'
     ];
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function showAll()
     {
         return view('customers.index', ['customers' => Customer::all()]);
