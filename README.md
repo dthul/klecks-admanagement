@@ -1,7 +1,7 @@
 Klecks Werbeverwaltung
 ======================
 
-Dieses Repository enthält den Code zor Klecks Werbeverwaltungssoftware.
+Dieses Repository enthält den Code zur Klecks Werbeverwaltungssoftware.
 
 Systemvoraussetzungen
 ---------------------
@@ -81,4 +81,3 @@ Datenbanktabellen einrichten (Achtung, löscht Daten, nur beim ersten Mal oder i
 ```bash
 php artisan migrate:refresh
 ```
-
