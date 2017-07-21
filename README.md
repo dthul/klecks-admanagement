@@ -32,6 +32,15 @@ composer install
 npm install
 ```
 
+`.env.example` nach `.env` kopieren und anpassen.
+
+Datenbanktabellen einrichten (Achtung, löscht Daten, nur beim ersten Mal oder im Development benutzen):
+
+```bash
+php artisan migrate:refresh
+php artisan db:seed
+```
+
 Das Projekt mit Gulp bauen:
 
 * continuous: `npm run dev`
@@ -47,6 +56,8 @@ php artisan serve
 
 Anleitung zum Deployen
 ----------------------
+
+Auf dem Server:
 
 ```bash
 apt install php-fpm php-mbstring php-pgsql php-xml php-tokenizer

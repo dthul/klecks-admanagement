@@ -49,24 +49,31 @@ elixir((mix) => {
             'node_modules/what-input/dist/what-input.min.js',
             'public/js/vendor/what-input.min.js'
         )
-        .webpack(
-            [
-                'node_modules/foundation-sites/js/foundation.core.js',
-                'node_modules/foundation-sites/js/foundation.util.box.js',
-                'node_modules/foundation-sites/js/foundation.util.keyboard.js',
-                'node_modules/foundation-sites/js/foundation.util.mediaQuery.js',
-                'node_modules/foundation-sites/js/foundation.util.motion.js',
-                'node_modules/foundation-sites/js/foundation.util.triggers.js',
-                'node_modules/foundation-sites/js/foundation.reveal.js',
-            ],
-            'public/js/vendor/foundation.js',
-            '.',
-            {
-                // The default options exclude everything in the node_modules folder (https://github.com/JeffreyWay/laravel-elixir-webpack-official/blob/master/src/index.js)
-                module: {
-                    loaders: [{ test: /\.js$/, loader: 'buble' }] 
-                }
-            }
+        // Foundation stopped working when building it modularly so we include
+        // the complete foundation.min.js now instead.
+        // The old code:
+        // .webpack(
+        //     [
+        //         'node_modules/foundation-sites/js/foundation.core.js',
+        //         'node_modules/foundation-sites/js/foundation.util.box.js',
+        //         'node_modules/foundation-sites/js/foundation.util.keyboard.js',
+        //         'node_modules/foundation-sites/js/foundation.util.mediaQuery.js',
+        //         'node_modules/foundation-sites/js/foundation.util.motion.js',
+        //         'node_modules/foundation-sites/js/foundation.util.triggers.js',
+        //         'node_modules/foundation-sites/js/foundation.reveal.js',
+        //     ],
+        //     'public/js/vendor/foundation.js',
+        //     '.',
+        //     {
+        //         // The default options exclude everything in the node_modules folder (https://github.com/JeffreyWay/laravel-elixir-webpack-official/blob/master/src/index.js)
+        //         module: {
+        //             loaders: [{ test: /\.js$/, loader: 'buble' }] 
+        //         }
+        //     }
+        // )
+        .copy(
+            'node_modules/foundation-sites/dist/js/foundation.min.js',
+            'public/js/vendor/foundation.js'
         )
         .scripts(
             [
