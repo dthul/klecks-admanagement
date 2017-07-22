@@ -23,13 +23,30 @@ sudo apt install git
 sudo npm install -g gulp-cli
 ```
 
+Yarn zur Javascript-Paketverwaltung installieren:
+
+```bash
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+```
+
 [Composer](https://getcomposer.org/download/) herunterladen, `composer.phar` in `composer` umbenennen und in `$PATH` eintragen.
+
+Eventuell [Laravel](https://laravel.com/) installieren. Ist nicht unbedingt notwendig, außer man will `laravel` Befehle ausführen:
+
+```bash
+sudo apt install php-zip
+composer global require "laravel/installer"
+```
+
+Danach `~/.config/composer/vendor/bin` in `$PATH` eintragen.
 
 Abhängigkeiten installieren:
 
 ```bash
 composer install
-npm install
+yarn install
 ```
 
 `.env.example` nach `.env` kopieren und anpassen.
@@ -41,11 +58,11 @@ php artisan migrate:refresh
 php artisan db:seed
 ```
 
-Das Projekt mit Gulp bauen:
+Das Projekt mit Mix bauen:
 
-* continuous: `npm run dev`
-* one-off development: `gulp`
-* one-off production: `gulp --production`
+* continuous development: `npm run watch`
+* one-off development: `npm run dev`
+* one-off production: `npm run prod`
 
 
 Development-Server aufrufen (benötigt eingerichtete Datenbank):
@@ -79,9 +96,13 @@ sqlite3 /path/to/db.sqlite
 > .exit
 ```
 
-Auf der lokalen Maschine alle Dependencies installieren (`composer install`, `npm install`) und die App bauen (`gulp --production`). Dann deployen (`./deploy.sh`).
+Auf der lokalen Maschine alle Dependencies installieren (`composer install`, `yarn install`) und die App bauen (`npm run production`). Dann deployen (`./deploy.sh`).
 
-`.env.example` nach `.env` kopieren und anpassen.
+Auf dem Server:
+
+Bei Ersteinrichtung `.env.example` nach `.env` kopieren und anpassen. Nach Laravel Update `.env.example` und bestehendes `.env` vergleichen und eventuell anpassen.
+
+Zum Erzeugen des App-Keys (nur bei Ersteinrichtung benötigt):
 
 ```bash
 php artisan key:generate
