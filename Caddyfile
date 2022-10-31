@@ -1,0 +1,3 @@
+klecks.8na.de {
+    reverse_proxy klecks-admanagement:80
+}

@@ -16,6 +16,10 @@ class AppServiceProvider extends ServiceProvider
     {
         // TODO: does this belong here?
         setlocale(LC_TIME, 'de_DE.utf8');
+        // Use HTTPS for all routes
+        if($this->app->environment('production')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }        
     }
 
     /**

@@ -1,0 +1,13 @@
+.env
+.git/
+.gitattributes
+.gitignore
+Caddyfile
+deploy.sh
+docker.md
+Dockerfile
+LICENSE.txt
+node_modules/
+README.md
+rsync.exclude
+vendor/
